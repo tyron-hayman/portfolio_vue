@@ -46,7 +46,7 @@ function goHome() {
   <div ref="navBlock" class="flex items-center justify-between px-5 laptop:px-20 py-5 laptop:py-16">
     <div class="flex items-center">
         <h1 class="text-4xl font-bold text-black uppercase"><span class="hidden tablet:block">{{ content }}</span><span class="block tablet:hidden">TH</span></h1>
-        <p v-if="route.path != '/'" class="bg-black text-white text-md cursor-pointer rounded-full px-5 py-2 ml-4" @click="goHome"><font-awesome-icon :icon="faArrowLeftLong" /></p>
+        <p v-if="route.path != '/'" class="bg-black text-white hover:text-black hover:bg-white transition-all text-md cursor-pointer rounded-full px-5 py-2 ml-4" @click="goHome"><font-awesome-icon :icon="faArrowLeftLong" /></p>
     </div>
     <div>
       <ul class="flex items-center gap-6">

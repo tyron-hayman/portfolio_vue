@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 const isLoading: any = ref(true)
+const isOpen: any = ref(true);
 const noteList: any = ref({});
 const notificationWrap: any = ref(null)
 const { resolveClient } = useApolloClient();
@@ -47,7 +48,7 @@ onUpdated(() => {
 
 const closeNote = (event) => {
     gsap.to(event.currentTarget, { opacity : 0, scale : 0.1, duration : 0.35, onComplete: () => {
-        event.target.style.display = "none"
+        isOpen.value = false;
     } });
 }
 
@@ -57,7 +58,7 @@ fetchSiteData();
 
 <template>
     <div ref="notificationWrap" v-if="!isLoading" class="fixed z-[1000] right-10 bottom-10 w-[300px] flex flex-wrap gap-4">
-        <div class="group w-full rounded-xl overflow-hidden bg-white p-5 relative shadow-lg" v-for="(item, index) in noteList" @click="closeNote($event)">
+        <div class="group w-full rounded-xl overflow-hidden bg-white p-5 relative shadow-lg" :class="[ isOpen ? 'block' : 'hidden' ]" v-for="(item, index) in noteList" @click="closeNote($event)">
             <h3 class="text-md font-bold text-black mb-5">{{ item.title }}</h3>
             <div class="text-sm text-gray-800 leading-relaxed font-normal notification" v-html="item.content"></div>
             <div class="absolute right-5 top-5 z-10">

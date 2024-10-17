@@ -98,7 +98,8 @@ const fetchSiteData = () => {
       footerContent.value = {
           title : data.data.pages.nodes[0].homepage.footerTitle,
           content: data.data.pages.nodes[0].homepage.footerContent,
-          email: data.data.pages.nodes[0].homepage.footerEmail
+          email: data.data.pages.nodes[0].homepage.footerEmail,
+          image : data.data.pages.nodes[0].homepage.footerAvatar.mediaItemUrl,
       }
   }).catch((err) => {
       console.log(err)
@@ -117,7 +118,7 @@ fetchSiteData();
     <WorkSection :title="workSection.title" :content="workSection.content" :items="workSection.items" />
     <ExperienceSection :title="expSection.title" :content="expSection.content" :items="expSection.items" />
     <div class="flex justify-center flex-wrap">
-      <FooterSection :title="footerContent.title" :email="footerContent.email" :content="footerContent.content" />
+      <FooterSection :title="footerContent.title" :email="footerContent.email" :content="footerContent.content" :image="footerContent.image" />
     </div>
   </main>
 </template>

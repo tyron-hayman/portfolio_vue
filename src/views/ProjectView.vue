@@ -43,6 +43,9 @@ const CHARACTERS_QUERY = gql`
           footerTitle
           footerEmail
           footerContent
+          footerAvatar {
+            mediaItemUrl
+          }
         }
       }
     }
@@ -62,7 +65,8 @@ const fetchSiteData = () => {
     footerContent.value = {
           title : data.data.pages.nodes[0].homepage.footerTitle,
           content: data.data.pages.nodes[0].homepage.footerContent,
-          email: data.data.pages.nodes[0].homepage.footerEmail
+          email: data.data.pages.nodes[0].homepage.footerEmail,
+          image : data.data.pages.nodes[0].homepage.footerAvatar.mediaItemUrl,
       }
   }).catch((err) => {
       console.log(err)
@@ -115,11 +119,11 @@ fetchSiteData();
           <div class="serif text-md font-bold laptop:mt-2 my-10 laptop:my-0">Status</div>
           <div class="w-full laptop:w-7/12">
             <p v-if="!pageData.url" class="serif text-2xl text-black">Campaign Ended</p>
-            <a v-else :href="pageData.url" target="_blank" class="serif text-xl text-white rounded-full bg-black px-4 py-2">View Live Site</a>
+            <a v-else :href="pageData.url" target="_blank" class="serif text-xl text-white hover:text-black rounded-full bg-black hover:bg-white transition-all px-4 py-2">View Live Site</a>
           </div>
         </div>
       </div>
-      <FooterSection :title="footerContent.title" :email="footerContent.email" :content="footerContent.content" />
+      <FooterSection :title="footerContent.title" :email="footerContent.email" :content="footerContent.content" :image="footerContent.image" />
   </main>
 </template>
 
