@@ -116,7 +116,9 @@ fetchSiteData();
     <LandingBlock :content="homePage" :subContent="aboutSection" />
     <WorkSection :title="workSection.title" :content="workSection.content" :items="workSection.items" />
     <ExperienceSection :title="expSection.title" :content="expSection.content" :items="expSection.items" />
-    <FooterSection :title="footerContent.title" :email="footerContent.email" :content="footerContent.content" />
+    <div class="flex justify-center flex-wrap">
+      <FooterSection :title="footerContent.title" :email="footerContent.email" :content="footerContent.content" />
+    </div>
   </main>
 </template>
 
