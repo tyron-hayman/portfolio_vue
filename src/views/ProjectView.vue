@@ -89,10 +89,10 @@ onBeforeRouteLeave((to, from, next) => {
 <template>
   <main v-if="!isLoading" class="px-5 laptop:px-0">
     <div class="container mt-40 mb-[300px] pl-0 laptop:pl-[23%] relative">
-      <h1 class="text-[8vw] font-black leading-[7vw] relative z-10">{{ pageTtitle }}</h1>
-      <div ref="proImage" v-if="!pageData.isVideo" class="w-[55%] overflow-hidden block aspect-video !bg-cover rounded-3xl fixed top-[10%] right-0 z-[0] rotate-6"
+      <h1 class="text-[13vw] laptop:text-[8vw] font-black leading=[12vw] laptop:leading-[7vw] relative z-10">{{ pageTtitle }}</h1>
+      <div ref="proImage" v-if="!pageData.isVideo" class="w-full laptop:w-[55%] overflow-hidden block aspect-video !bg-cover rounded-3xl fixed top-[275px] laptop:top-[10%] right-0 z-[0] rotate-6"
       :style="{ background : `url(${pageData.image.mediaItemUrl}) center center no-repeat`}"></div>
-      <div ref="proImage" v-else class="w-[15%] !bg-cover rounded-3xl fixed top-[10%] right-[25%] z-[0] rotate-6">
+      <div ref="proImage" v-else class="w-[50%] laptop:w-[15%] !bg-cover rounded-3xl fixed top-[175px] laptop:top-[10%] right-[20%] z-[0] rotate-6">
         <video muted autoplay loop class="absolute inset-x-0 z-10 inset-y-0 w-full">
           <source :src="pageData.video.mediaItemUrl" type="video/mp4">
           Your browser does not support the video tag.

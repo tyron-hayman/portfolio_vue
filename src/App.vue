@@ -1,10 +1,12 @@
 <script lang="ts" setup>
 import { ref, watch } from 'vue'
 import NavBlock from './components/NavBlock.vue';
+import NotificationsBlock from './components/NotificationsBlock.vue';
 </script>
 
 <template>
   <NavBlock content="TyronHayman" />
+  <NotificationsBlock />
   <RouterView v-slot="{Component}">
     <Transition name="pageTrans" mode="out-in">
       <component :is="Component"/>

@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import LandingBlock from '../components/LandingBlock.vue'
 import WorkSection from '../components/WorkSection.vue';
 import ExperienceSection from '../components/ExperienceSection.vue';
+import FooterSection from '../components/FooterSection.vue';
 import { useApolloClient } from '@vue/apollo-composable'
 import { gql } from "@apollo/client/core";
 
@@ -11,6 +12,7 @@ const homePage: any = ref({})
 const aboutSection: any = ref({})
 const workSection: any = ref({})
 const expSection: any = ref({})
+const footerContent: any = ref({})
 const { resolveClient } = useApolloClient();
 const client = resolveClient()
 const CHARACTERS_QUERY = gql`
@@ -93,6 +95,11 @@ const fetchSiteData = () => {
           content: data.data.pages.nodes[0].homepage.experienceContent,
           items: data.data.pages.nodes[0].homepage.workExperience
       }
+      footerContent.value = {
+          title : data.data.pages.nodes[0].homepage.footerTitle,
+          content: data.data.pages.nodes[0].homepage.footerContent,
+          email: data.data.pages.nodes[0].homepage.footerEmail
+      }
   }).catch((err) => {
       console.log(err)
   }).finally(() => {
@@ -109,6 +116,7 @@ fetchSiteData();
     <LandingBlock :content="homePage" :subContent="aboutSection" />
     <WorkSection :title="workSection.title" :content="workSection.content" :items="workSection.items" />
     <ExperienceSection :title="expSection.title" :content="expSection.content" :items="expSection.items" />
+    <FooterSection :title="footerContent.title" :email="footerContent.email" :content="footerContent.content" />
   </main>
 </template>
 
