@@ -1,12 +1,26 @@
 <script lang="ts" setup>
 import { ref, watch } from 'vue'
 import NavBlock from './components/NavBlock.vue';
-import NotificationsBlock from './components/NotificationsBlock.vue';
+import LoadingBlock from './components/LoadingBlock.vue'
+import { useRoute, useRouter, onBeforeRouteLeave } from 'vue-router'
+
+const route = useRoute();
+const router = useRouter();
+const isLoading: any = ref(true);
+
+router.beforeEach((to, from, next) => {
+  isLoading.value = true
+    next()
+})
+
+router.afterEach(() => {
+    isLoading.value = false
+})
 </script>
 
 <template>
   <NavBlock content="TyronHayman" />
-  <NotificationsBlock />
+  <LoadingBlock :loading="isLoading" />
   <RouterView v-slot="{Component}">
     <Transition name="pageTrans" mode="out-in">
       <component :is="Component"/>

@@ -31,7 +31,6 @@ const fetchSiteData = () => {
       query: CHARACTERS_QUERY,
       fetchPolicy: "cache-first"
   }).then((data) => {
-    console.log(data.data.themeSettingsNext.notificationOptions.notificationList)
     noteList.value = data.data.themeSettingsNext.notificationOptions.notificationList;
   }).catch((err) => {
       console.log(err)

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import LandingBlock from '../components/LandingBlock.vue'
 import WorkSection from '../components/WorkSection.vue';
 import ExperienceSection from '../components/ExperienceSection.vue';
@@ -82,7 +82,6 @@ const fetchSiteData = () => {
       query: CHARACTERS_QUERY,
       fetchPolicy: "cache-first"
   }).then((data) => {
-      console.log(data.data.pages.nodes[0].homepage.experienceTitle)
       homePage.value = data.data.pages.nodes[0].homepage.initialBox
       aboutSection.value = data.data.pages.nodes[0].homepage.about
       workSection.value = {

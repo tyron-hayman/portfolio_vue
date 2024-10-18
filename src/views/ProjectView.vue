@@ -59,7 +59,6 @@ const fetchSiteData = () => {
     const arr = data.data.pages.nodes[0].homepage.recentWork;
     const target = route.params.id;
     const result = arr.find(({ title }) => title === target);
-    console.log(result)
     pageData.value = result;
     pageTtitle.value = result.title.replaceAll("-", " ");
     footerContent.value = {
